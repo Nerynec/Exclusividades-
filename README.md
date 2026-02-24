@@ -61,6 +61,22 @@ Este script:
 - Usuario: `admin@tienda.com`
 - Contraseña: `admin123`
 
+
+## Si no te deja iniciar sesión
+
+Si ya tenías una base creada de una versión anterior, puede existir un hash viejo para el usuario admin.
+
+Opciones:
+- Reiniciar la base (solo en desarrollo):
+
+```bash
+docker compose down -v
+docker compose up -d mysql
+```
+
+- O simplemente intenta entrar con `admin@tienda.com` / `admin123`:
+  al primer login exitoso, el backend migra automáticamente el hash del admin por defecto.
+
 ## Endpoints principales
 
 - `POST /api/auth/login`
