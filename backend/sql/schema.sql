@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS caja_movimientos (
 
 -- Contraseña: admin123
 INSERT INTO usuarios (nombre, email, password_hash, rol)
-VALUES ('Administrador', 'admin@tienda.com', '$2a$10$esxMdEL0f3fGfEJ5wEQqDO5G13JglgJQ9nBGCQpAw5yv5ud6jFbT6', 'admin')
+VALUES ('Administrador', 'admin@tienda.com', 'admin123', 'admin')
 ON DUPLICATE KEY UPDATE
   nombre = VALUES(nombre),
   password_hash = VALUES(password_hash),
