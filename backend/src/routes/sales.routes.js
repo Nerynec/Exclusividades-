@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const io = req.app.get('io');
   const conn = await pool.getConnection();
   try {
     const { items } = req.body;
@@ -48,6 +49,11 @@ router.post('/', async (req, res) => {
     ]);
 
     await conn.commit();
+
+    if (io) {
+      io.emit('sale:created', { ventaId, total, fecha: new Date().toISOString() });
+    }
+
     return res.status(201).json({ ventaId, total });
   } catch (error) {
     await conn.rollback();

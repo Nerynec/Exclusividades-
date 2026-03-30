@@ -7,6 +7,7 @@ import Inventory from './pages/Inventory';
 import Sales from './pages/Sales';
 import Purchases from './pages/Purchases';
 import Cash from './pages/Cash';
+import Users from './pages/Users';
 
 function Protected({ children }) {
   const token = localStorage.getItem('token');
@@ -24,6 +25,7 @@ export default function App() {
       <Route path="/ventas" element={<Protected><Sales /></Protected>} />
       <Route path="/compras" element={<Protected><Purchases /></Protected>} />
       <Route path="/caja" element={<Protected><Cash /></Protected>} />
+      <Route path="/usuarios" element={<Protected><Users /></Protected>} />
     </Routes>
   );
 }

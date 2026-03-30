@@ -9,6 +9,8 @@ const purchasesRoutes = require('./routes/purchases.routes');
 const inventoryRoutes = require('./routes/inventory.routes');
 const cashRoutes = require('./routes/cash.routes');
 const dashboardRoutes = require('./routes/dashboard.routes');
+const usersRoutes = require('./routes/users.routes');
+const reportsRoutes = require('./routes/reports.routes');
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use('/api/compras', purchasesRoutes);
 app.use('/api/inventario', inventoryRoutes);
 app.use('/api/caja', cashRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/usuarios', usersRoutes);
+app.use('/api/reportes', reportsRoutes);
 
 app.use((err, _req, res, _next) => {
   return res.status(500).json({ message: 'Error interno', detail: err.message });

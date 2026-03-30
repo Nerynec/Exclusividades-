@@ -9,6 +9,10 @@ Proyecto fullstack con **backend en Node.js/Express**, **frontend en React** y *
 - Caja (ingresos/egresos y balance)
 - Dashboard con filtros por fecha, productos más vendidos y ventas por día/mes
 - Login con JWT
+- Roles: admin y vendedor
+- Reportes PDF descargables
+- Dashboard en tiempo real (WebSockets)
+- Modo oscuro
 
 ## Estructura
 
@@ -88,3 +92,7 @@ docker compose up -d mysql
 - `GET /api/caja/movimientos`
 - `GET /api/caja/balance`
 - `GET /api/dashboard?from=YYYY-MM-DD&to=YYYY-MM-DD`
+- `GET/POST /api/usuarios` (admin)
+- `PUT /api/usuarios/:id/rol` (admin)
+- `GET /api/reportes/ventas.pdf`
+- `POST /api/caja/movimientos`
