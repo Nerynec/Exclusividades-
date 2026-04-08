@@ -2,7 +2,7 @@
 
 Proyecto fullstack con **backend en Node.js/Express**, **frontend en React** y **MySQL** para administrar:
 
-- Productos (ropa, botas, sombreros, cinchos, etc.)
+- Productos (alta, edición y eliminación: ropa, botas, sombreros, cinchos, etc.)
 - Ventas
 - Compras
 - Inventario
@@ -37,13 +37,46 @@ npm run dev
 ```bash
 cd frontend
 npm install
+# opcional: export VITE_API_URL=http://localhost:4000/api
 npm run dev
 ```
+
+## Arranque rápido (un solo comando)
+
+También puedes iniciar todo con:
+
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+Este script:
+- Levanta MySQL con Docker Compose
+- Espera a que la base esté lista
+- Crea `backend/.env` si no existe
+- Instala dependencias de backend y frontend
+- Inicia backend y frontend
 
 ## Credenciales iniciales
 
 - Usuario: `admin@tienda.com`
 - Contraseña: `admin123`
+
+
+## Si no te deja iniciar sesión
+
+Si ya tenías una base creada de una versión anterior, puede existir un hash viejo para el usuario admin.
+
+Opciones:
+- Reiniciar la base (solo en desarrollo):
+
+```bash
+docker compose down -v
+docker compose up -d mysql
+```
+
+- O simplemente intenta entrar con `admin@tienda.com` / `admin123`:
+  al primer login exitoso, el backend migra automáticamente el hash del admin por defecto.
 
 ## Endpoints principales
 

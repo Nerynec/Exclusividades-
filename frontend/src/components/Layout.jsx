@@ -1,7 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png'; // 👈 IMPORTANTE
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
+
   const logout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -10,17 +12,29 @@ export default function Layout({ children }) {
   return (
     <div className="container">
       <aside className="sidebar">
-        <h2>Exclusividades</h2>
+
+        {/* 🔥 LOGO + MARCA */}
+        <div className="brand">
+          <img src={logo} alt="Logo" className="logo" />
+          <h2>Exclusivos Glorita</h2>
+          <p>Panel de administración</p>
+        </div>
+
         <nav>
-          <Link to="/">Dashboard</Link>
-          <Link to="/productos">Productos</Link>
-          <Link to="/inventario">Inventario</Link>
-          <Link to="/ventas">Ventas</Link>
-          <Link to="/compras">Compras</Link>
-          <Link to="/caja">Caja</Link>
+          <NavLink to="/">Dashboard</NavLink>
+          <NavLink to="/productos">Productos</NavLink>
+          <NavLink to="/inventario">Inventario</NavLink>
+          <NavLink to="/ventas">Ventas</NavLink>
+          <NavLink to="/compras">Compras</NavLink>
+          <NavLink to="/caja">Caja</NavLink>
         </nav>
-        <button onClick={logout}>Cerrar sesión</button>
+
+        <button className="btn-danger" onClick={logout}>
+          Cerrar sesión
+        </button>
+
       </aside>
+
       <main>{children}</main>
     </div>
   );
